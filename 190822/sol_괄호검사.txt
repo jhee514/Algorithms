@@ -1,0 +1,26 @@
+import sys
+
+def find():
+    for i in range(len(str)):
+        if str[i] == '{' or str[i] == '(':  # 괄호 시작 push
+            s.append(str[i])
+        elif str[i] == '}' or str[i] == ')':  # 괄호 닫음 pop
+            if not s:                   # 스택(리스트)가 비어있으면 0
+                return 0
+            r = s.pop()
+            if (str[i] == '}' and r == '(') or (str[i] == ')' and r == '{'):
+                return 0                # 짝이 아닌 경우 0 반환
+    if len(s) == 0:
+        return 1                        # 모든 괄호가 짝이 맞은 경우 1
+    else:
+        return 0                        # 스택에 남은게 있으면 0
+
+
+
+sys.stdin = open('input.txt', 'r')
+T = int(input())
+for tc in range(1, T+1):
+    s = list()
+    str = input()
+    print('#{} {}'.format(tc, find()))
+    

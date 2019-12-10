@@ -1,0 +1,25 @@
+import sys
+
+def dfs(n):
+    if n == end:                    # 목적지면 1 반환
+        return 1
+    else:
+        for t in adj[n]:
+            if visited[t] == 0:
+                visited[t] = 1
+                if dfs(t) == 1:
+                    return 1
+        return 0                    # 목적지를 못찾고 다른 경로를 찾아야할 때 0반환
+
+sys.stdin = open('input.txt', 'r')
+T = int(input())
+for tc in range(1, T+1):
+    
+    V, E = map(int, input().split())
+    visited = {i:0 for i in range(V+1)}
+    adj = {i:[] for i in range(1,V+1)}      # 인접 리스트
+    for i in range (E):
+        n1, n2 = map(int, input().split())
+        adj[n1].append(n2)
+    start, end = map(int, input().split())
+    print('#{} {}'.format(tc, dfs(start)))

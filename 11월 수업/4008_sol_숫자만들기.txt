@@ -1,0 +1,41 @@
+import sys
+sys.stdin = open('input.txt', 'r')
+
+def solve(k, v):
+    global maxans, minans
+    if k == N:
+        if v > maxans: maxans = v
+        if v < minans: minans = v
+    else:
+        if op[0]:
+            op[0] -= 1
+            solve(k + 1, v + nums[k])
+            op[0] += 1
+        if op[1]:
+            op[1] -= 1
+            solve(k + 1, v - nums[k])
+            op[1] += 1
+        if op[2]:
+            op[2] -= 1
+            solve(k + 1, v * nums[k])
+            op[2] += 1
+        if op[3]:
+            op[3] -= 1
+            solve(k + 1, int(v / nums[k]))
+            op[3] += 1
+
+
+for tc in range(1, int(input()) + 1):
+    N = int(input())
+    op = list(map(int, input().split()))
+    nums = list(map(int, input().split()))
+
+    maxans = -100000000000
+    minans = 100000000000
+    solve(1, nums[0])
+
+    print('#%d'%tc, maxans - minans)
+    
+ 
+
+

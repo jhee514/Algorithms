@@ -1,0 +1,24 @@
+def fr(num):
+    if num < 1:
+        return 1
+    else:
+        return fr(num -1) + fr(num-2)*2
+
+def fdp(n):
+
+    for i in range(2,n+1):
+        DP[i] = DP[i-1] + 2* DP[i-2]
+
+    return DP[n]
+
+
+Tc = int(input().strip())
+case=0
+for i in range(Tc):
+    DP = [0] * 31
+    DP[0] = 1
+    DP[1] = 1
+
+    w = int(input().strip())//10
+    case = fdp(w)
+    print("#%d %d" % (i+1, case))

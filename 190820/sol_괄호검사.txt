@@ -1,0 +1,30 @@
+stack = [0] * 100
+top = -1
+str = "((()()(()())"
+
+wrong = 0
+for i in range(len(str)):
+    if str[i] == '(':
+        top += 1; stack[top] = str[i]
+    elif str[i] == ')':
+        if top == -1:
+            wrong = 1
+            break
+        top -= 1
+
+if top == -1 or wrong : print("correct!")
+else: print("wrong!")
+
+braceStack = []
+for i in range(len(str)):
+    if str[i] == '(':
+        braceStack.append(str[i])
+    elif str[i] == ')':
+        braceStack.pop()
+        if len(braceStack) == 0 :
+            break
+
+if len(braceStack) > 0 or i < len(str)-1:
+    print("Wrong")
+else:
+    print("Correct")

@@ -1,0 +1,42 @@
+import sys
+sys.stdin = open("forth_input.txt", "r")
+
+T = int(input())
+for tc in range(T):
+    L = list(input().split())
+
+    res = 0
+    stack = [0]*len(L)
+    top = -1
+
+    for i in range(len(L)):
+        if L[i] == '+' or L[i] == '-' or L[i] == '*' or L[i] == '/':
+            if top <1:
+                res = "error"
+                break
+            op1 = int(stack[top-1])
+            op2 = int(stack[top])
+            if L[i] == '+':
+                stack[top-1] = op1 + op2
+                top -= 1
+            elif L[i] == '-':
+                stack[top-1] = op1 - op2
+                top -= 1
+
+            elif L[i] == '*':
+                stack[top - 1] = op1 * op2
+                top -= 1
+            elif L[i] == '/':
+                stack[top - 1] = op1 // op2
+                top -= 1
+        elif L[i] == '.':
+            if top == 0:
+                res = stack[top]
+            else:
+                res = "error"
+                break
+        elif L[i] != ' ':
+            top += 1
+            stack[top] = L[i]
+
+    print("#%d %s" % (tc+1, res))

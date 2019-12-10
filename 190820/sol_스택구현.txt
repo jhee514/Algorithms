@@ -1,0 +1,28 @@
+def push(item):
+    stack.append(item)
+
+def pop():
+    if len(stack) > 0:
+        return stack.pop(-1)
+
+stack = [0] * 10
+top = -1
+
+push(1)
+push(2)
+push(3)
+
+print("pop item =>",pop())
+print("pop item =>",pop())
+print("pop item =>",pop())
+
+for i in range(3): #push operation
+    stack[top + 1] = i
+    top += 1
+
+for i in range(3): #pop operation
+    t = stack[top]
+    top -= 1
+    print(t)
+
+

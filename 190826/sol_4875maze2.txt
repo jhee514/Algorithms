@@ -1,0 +1,29 @@
+import sys
+
+def find(row, col):
+    dRow = [0,1,0,-1]
+    dCol = [1,0,-1,0]
+        
+    maze[row][col] = 1                 # 방문 표시
+    for i in range(4):                              # 주변 좌표 계산
+        nRow = row + dRow[i]                         
+        nCol = col + dCol[i]
+        if nRow>=0 and nRow<N and nCol>=0 and nCol<N: # 미로 내부
+            if maze[nRow][nCol] == 3:             # 출구인경우 1반환
+                return 1
+            elif maze[nRow][nCol] == 0:           # 갈 수 있는 곳으로 이동
+                if find(nRow, nCol) == 1:       # 목적지에 도착한 경우
+                    return 1
+    return 0                                    # 이전 칸의 다른 방향으로 이동해야 하는 경우
+
+sys.stdin = open('input.txt', 'r')
+T = int(input())
+
+for tc in range(1, T+1):
+    N = int(input())
+    maze = [[int(x) for x in input()] for i in range(N)] # 미로를 중첩리스트로 저장
+    for i in range(N):
+        if 2 in maze[i]:
+            sRow = i            # 출발 row index
+            sCol = maze[i].index(2)            # 출발 column index
+    print('#{} {}'.format(tc, find(sRow, sCol)))
