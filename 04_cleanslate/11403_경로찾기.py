@@ -31,4 +31,4 @@ for tc in range(2):
     data = [list(map(int, input().split())) for _ in range(n)]
     result = sol(n, data)
     for i in range(n):
-        print(' '.join(str(x) for x in sol(n, data)[i]))
+        print(' '.join(str(x) for x in result[i]))
