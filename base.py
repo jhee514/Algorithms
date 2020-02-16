@@ -14,4 +14,6 @@ for tc in range(T):
     data = [list(map(int, input())) for _ in range(n)]
     matrix = [list(map(int, input().split())) for _ in range(n)]
     table = [list(input()) for _ in range(n)]
+
+    print(' '.join(str(x) for x in nums))
     print("#{} {}".format(tc+1, ??))
