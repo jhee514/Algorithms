@@ -1,17 +1,6 @@
 import sys
 sys.stdin = open("1249_input.txt", "r")
 
-
-"""
-bfs dfs
-broad depth
-hmmm
-what will be the right one
-i guess this is about dfs since wh have to find a shortest, a route costs least
-so i guess we have to look from broad spectrum
-"""
-
-
 """
 컨설턴트님 팁
 가지치기 + 메모이제이션
