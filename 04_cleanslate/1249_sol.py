@@ -3,11 +3,11 @@ sys.stdin = open("1249_input.txt", "r")
 
 from collections import deque
 
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
-
 
 def dfs(x, y):
+    dx = [0, 0, 1, -1]
+    dy = [1, -1, 0, 0]
+
     q = deque()
     q.append((x, y))
     d[x][y] = 0
